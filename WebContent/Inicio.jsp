@@ -29,7 +29,7 @@
 		<div class="body" align=center>
 		
 		<br><br><br><br><br><br><br><br><br><br><br><br>
-			<input type="submit" onclick="location.href='LogIn.jsp';" value="Iniciar Sesión" class="dropbtn" name="BtnLogIn">
+			<input type="submit" onclick="location.href='LogIn.jsp';" value="Iniciar Sesion" class="dropbtn" name="BtnLogIn">
 		</div>
 
 </body>

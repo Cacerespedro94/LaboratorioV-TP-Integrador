@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <title>Cuentas</title>
 </head>
 <body>
@@ -24,16 +25,6 @@
 				<li class="nav-item"><a href="ClienteInicio.jsp" class="nav-link">Inicio</a></li>
 				<li class="nav-item"><a class="nav-link">Historial</a></li>
 				<li class="nav-item"><a class="nav-link">Transferencias</a></li>
-				<li class="nav-item dropdown">
-				<a
-					class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Prestamos 
-				</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item">Pedir Prestamo</a> <a
-							class="dropdown-item">Pagar Prestamo</a>
-					</div></li>
 				<li class="nav-item"><a href="ClientePerfil.jsp" class="nav-link">Perfil</a></li>
 			</ul>
 			<ul class="navbar-nav" style="margin-right: 30px">
