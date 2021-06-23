@@ -27,7 +27,7 @@ public class Usuario implements Serializable {
 		@Column(name="nacionalidad")
 		private String nacionalidad;
 		@Column(name="fechaNacimiento")
-		private LocalDate fechaNacimiento;
+		private String fechaNacimiento;
 		@Column(name="direccion")
 		private String direccion;
 		@Column(name="localidad")
@@ -48,6 +48,32 @@ public class Usuario implements Serializable {
 		public Usuario() {
 			
 		}
+		
+		
+		
+		public Usuario(String nombreUsuario, String contrasena, int codTipoUsuario, int dni, int cuil, String sexo,
+				String nacionalidad, String fechaNacimiento, String direccion, String localidad, String provincia,
+				String email, int telefono, String nombre, String apellido, int estado) {
+			super();
+			this.nombreUsuario = nombreUsuario;
+			this.contrasena = contrasena;
+			this.codTipoUsuario = codTipoUsuario;
+			this.dni = dni;
+			this.cuil = cuil;
+			this.sexo = sexo;
+			this.nacionalidad = nacionalidad;
+			this.fechaNacimiento = fechaNacimiento;
+			this.direccion = direccion;
+			this.localidad = localidad;
+			this.provincia = provincia;
+			this.email = email;
+			this.telefono = telefono;
+			this.nombre = nombre;
+			this.apellido = apellido;
+			this.estado = estado;
+		}
+
+
 
 		public String getNombreUsuario() {
 			return nombreUsuario;
@@ -105,11 +131,11 @@ public class Usuario implements Serializable {
 			this.nacionalidad = nacionalidad;
 		}
 
-		public LocalDate getFechaNacimiento() {
+		public String getFechaNacimiento() {
 			return fechaNacimiento;
 		}
 
-		public void setFechaNacimiento(LocalDate fechaNacimiento) {
+		public void setFechaNacimiento(String fechaNacimiento) {
 			this.fechaNacimiento = fechaNacimiento;
 		}
 

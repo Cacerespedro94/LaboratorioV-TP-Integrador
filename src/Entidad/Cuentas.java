@@ -23,7 +23,7 @@ public class Cuentas implements Serializable  {
 	@Column(name="cbu")
 	private String cbu;
 	@Column(name="fechaCreacion")
-	private LocalDate fechaCreacion;
+	private String fechaCreacion;
 	@Column(name="codTipoCuenta")
 	private int codTipoCuenta;
 	@Column(name="saldo")
@@ -42,6 +42,19 @@ public class Cuentas implements Serializable  {
 
 	public int getNroCuenta() {
 		return nroCuenta;
+	}
+
+
+	public Cuentas(int nroCuenta, String nombreUsuario, String cbu, String fechaCreacion, int codTipoCuenta,
+			float saldo, int estado) {
+		super();
+		this.nroCuenta = nroCuenta;
+		this.nombreUsuario = nombreUsuario;
+		this.cbu = cbu;
+		this.fechaCreacion = fechaCreacion;
+		this.codTipoCuenta = codTipoCuenta;
+		this.saldo = saldo;
+		this.estado = estado;
 	}
 
 
@@ -70,12 +83,12 @@ public class Cuentas implements Serializable  {
 	}
 
 
-	public LocalDate getFechaCreacion() {
+	public String getFechaCreacion() {
 		return fechaCreacion;
 	}
 
 
-	public void setFechaCreacion(LocalDate fechaCreacion) {
+	public void setFechaCreacion(String fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
 

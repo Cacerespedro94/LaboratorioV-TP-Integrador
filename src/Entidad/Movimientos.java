@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,12 +16,13 @@ public class Movimientos implements Serializable {
 private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue
 	@Column(name="nroMovimiento")
 	private int nroMovimiento;
 	@Column(name="nroCuenta")
 	private int nroCuenta;
 	@Column(name="fecha")
-	private LocalDate fecha;
+	private String fecha;
 	@Column(name="detalle")
 	private String detalle;
 	@Column(name="importe")
@@ -46,10 +48,10 @@ private static final long serialVersionUID = 1L;
 	public void setNroCuenta(int nroCuenta) {
 		this.nroCuenta = nroCuenta;
 	}
-	public LocalDate getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	public String getDetalle() {
@@ -77,6 +79,18 @@ private static final long serialVersionUID = 1L;
 		this.cbuDestino = cbuDestino;
 	}
 	
+	
+	public Movimientos(int nroCuenta, String fecha, String detalle, float importe,
+			int tipoMovimiento, String cbuDestino) {
+		super();
+		this.nroCuenta = nroCuenta;
+		this.fecha = fecha;
+		this.detalle = detalle;
+		this.importe = importe;
+		this.tipoMovimiento = tipoMovimiento;
+		this.cbuDestino = cbuDestino;
+	}
+
 	@Override
 	public String toString() {
 		return "Movimientos [nroMovimiento=" + nroMovimiento + ", nroCuenta=" + nroCuenta + ", fecha=" + fecha

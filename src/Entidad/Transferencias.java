@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,6 +15,7 @@ public class Transferencias implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue
 	@Column(name="ID_Transferencia")
 	private int ID_Transferencia;
 	@Column(name="CBU_Emisor")
@@ -46,11 +48,20 @@ public class Transferencias implements Serializable{
 	public void setMonto(float monto) {
 		Monto = monto;
 	}
+	
+	public Transferencias(String cBU_Emisor, String cBU_Receptor, float monto) {
+
+		
+		CBU_Emisor = cBU_Emisor;
+		CBU_Receptor = cBU_Receptor;
+		Monto = monto;
+	}
 	@Override
 	public String toString() {
 		return "Transferencias [ID_Transferencia=" + ID_Transferencia + ", CBU_Emisor=" + CBU_Emisor + ", CBU_Receptor="
 				+ CBU_Receptor + ", Monto=" + Monto + "]";
 	}
+	
 	
 	
 }
