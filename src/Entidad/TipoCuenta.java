@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,6 +15,7 @@ public class TipoCuenta  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue
 	@Column(name="nroTipoDeCuenta")
 	private int nroTipoDeCuenta;
 	@Column(name="descripcion")
@@ -22,6 +24,10 @@ public class TipoCuenta  implements Serializable {
 	public TipoCuenta() {
 		// TODO Auto-generated constructor stub
 	}
+	public TipoCuenta(String descripcion) {
+		this.descripcion=descripcion;
+	}
+
 
 	public int getNroTipoDeCuenta() {
 		return nroTipoDeCuenta;

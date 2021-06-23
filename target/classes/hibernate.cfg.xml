@@ -11,5 +11,9 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     	<property name= "hbm2ddl.auto">create</property>
     	<mapping class="Entidad.Usuario"/>
+    	<mapping class="Entidad.Cuentas"/>
+    	<mapping class="Entidad.Movimientos"/>
+    	<mapping class="Entidad.TipoCuenta"/>
+    	<mapping class="Entidad.Transferencias"/>
     </session-factory>
 </hibernate-configuration>
