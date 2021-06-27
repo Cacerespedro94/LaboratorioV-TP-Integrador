@@ -3,7 +3,7 @@
   <display-name>AppSpringMVC1</display-name>
   
   <welcome-file-list>
-    <welcome-file>IrLogin.html</welcome-file>
+    <welcome-file>Inicio.html</welcome-file>
   </welcome-file-list>
 
 	<servlet>

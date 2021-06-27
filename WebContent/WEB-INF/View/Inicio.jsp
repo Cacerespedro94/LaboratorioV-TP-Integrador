@@ -20,7 +20,7 @@
 	</style>
 </head>
 <body >
-	
+	<form action="irLogin.html" method="get">
 		<div class="fondo">
 			<h2 style="color:#000000;" align=center>
 			<b>BIENVENIDO A UTN E-BANK</b>
@@ -29,8 +29,8 @@
 		<div class="body" align=center>
 		
 		<br><br><br><br><br><br><br><br><br><br><br><br>
-			<input type="submit" onclick="location.href='LogIn.jsp';" value="Iniciar Sesion" class="dropbtn" name="BtnLogIn">
+			<input type="submit" value="Iniciar Sesion" class="dropbtn" name="BtnLogIn">
 		</div>
-
+</form>
 </body>
 </html>
