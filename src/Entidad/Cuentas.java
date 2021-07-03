@@ -28,6 +28,57 @@ public class Cuentas implements Serializable  {
 	private int codTipoCuenta;
 	@Column(name="saldo")
 	private float saldo;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cbu == null) ? 0 : cbu.hashCode());
+		result = prime * result + codTipoCuenta;
+		result = prime * result + estado;
+		result = prime * result + ((fechaCreacion == null) ? 0 : fechaCreacion.hashCode());
+		result = prime * result + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
+		result = prime * result + nroCuenta;
+		result = prime * result + Float.floatToIntBits(saldo);
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cuentas other = (Cuentas) obj;
+		if (cbu == null) {
+			if (other.cbu != null)
+				return false;
+		} else if (!cbu.equals(other.cbu))
+			return false;
+		if (codTipoCuenta != other.codTipoCuenta)
+			return false;
+		if (estado != other.estado)
+			return false;
+		if (fechaCreacion == null) {
+			if (other.fechaCreacion != null)
+				return false;
+		} else if (!fechaCreacion.equals(other.fechaCreacion))
+			return false;
+		if (nombreUsuario == null) {
+			if (other.nombreUsuario != null)
+				return false;
+		} else if (!nombreUsuario.equals(other.nombreUsuario))
+			return false;
+		if (nroCuenta != other.nroCuenta)
+			return false;
+		if (Float.floatToIntBits(saldo) != Float.floatToIntBits(other.saldo))
+			return false;
+		return true;
+	}
+
+
 	@Column(name="estado")
 	private int estado;
 	

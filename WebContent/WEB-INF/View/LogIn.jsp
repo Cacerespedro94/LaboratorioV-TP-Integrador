@@ -71,7 +71,7 @@ form{
 				<button type="submit" class="btn btn-primary btn-block">Ingresar</button>
 				
 				<div class="sign-up">
-				 <a href="#">Registrate</a>
+				 <a href="irAltaCuenta.html">Registra una cuenta </a><!-- Prueba controller para alta de cuenta despues cambiar a alta de usuario -->
 				</div>
 					</form>
 		</div>

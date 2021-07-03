@@ -77,10 +77,12 @@
 		</h2>
 		
 		<div>
+		<form action="AltaCuenta.html">
 			<table align=center>
+			
 				<tr>
 					<td>Nombre de Usuario</td>
-					<td><select class="form-control selectpicker"  data-live-search="true" name="ddlAltaCuentaNombreUsuario" required>
+					<td><select class="form-control selectpicker"  data-live-search="true" name="ddlAltaCuentaNombreUsuario" >
 			
 						<option data-tokens="" value= ></option>
 
@@ -99,7 +101,7 @@
 				</tr>
 				<tr>
 					<td>CBU</td>
-					<td><label name="lblAltaCuentaCBU"> </label> <input type="hidden" name="inputAltaCuentaCBU" value=" "> </td>
+					<td><label name="lblAltaCuentaCBU"> </label> <input  name="inputAltaCuentaCBU" value=" "> </td>
 				</tr>
 				<tr>
 					<td>Saldo</td>
@@ -113,10 +115,11 @@
 				
 
 			</table>
+			</form>
 		</div>
 		
 		<div align=center style="margin-top: 40px;">
-			<label name="lblAltaCuentaMensaje"></label>
+			${Mensaje}
 		</div>
 
 </body>

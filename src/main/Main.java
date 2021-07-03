@@ -1,15 +1,12 @@
 package main;
 
-
-
-import java.time.LocalDate;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import DAO.ConfigHibernate;
 import Entidad.Cuentas;
 import Entidad.Movimientos;
 import Entidad.TipoCuenta;
@@ -20,13 +17,10 @@ public class Main
     public static void main( String[] args )
     {
 	
-    	SessionFactory sessionFactory;
-    	Configuration configuration = new Configuration();
-    	configuration.configure();	
-    	ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-    	sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-    	Session session = sessionFactory.openSession();
- 
+		ConfigHibernate ch = new ConfigHibernate();
+		Session session= ch.abrirConexion();
+		
+
     	session.beginTransaction();
  
     	TipoCuenta tipoCuenta1 = new TipoCuenta("Dolares");
@@ -144,7 +138,7 @@ public class Main
   	
     	
     	session.getTransaction().commit();
-    	session.close();
-    	sessionFactory.close();
+    	ch.cerrarSession();
+    	ch.cerrarSessionFactory();
     }
 }
