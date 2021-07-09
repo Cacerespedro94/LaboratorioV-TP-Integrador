@@ -16,5 +16,10 @@
     	<mapping class="Entidad.Movimientos"/>
     	<mapping class="Entidad.TipoCuenta"/>
     	<mapping class="Entidad.Transferencias"/>
+    	<mapping class="Entidad.Provincia"/>
+    	<mapping class="Entidad.Pais"/>
+    	<mapping class="Entidad.TipoMovimiento"/>
+    	<mapping class="Entidad.TipoUsuario"/>
+    				
     </session-factory>
 </hibernate-configuration>

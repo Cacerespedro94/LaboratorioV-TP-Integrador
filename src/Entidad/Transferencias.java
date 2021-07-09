@@ -3,10 +3,13 @@ package Entidad;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,14 +19,27 @@ public class Transferencias implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	@Column(name="ID_Transferencia")
 	private int ID_Transferencia;
-	@Column(name="CBU_Emisor")
 	private String CBU_Emisor;
-	@Column(name="CBU_Receptor")
 	private String CBU_Receptor;
-	@Column(name="Monto")
+	private String Fecha;
 	private float Monto;
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="Movimiento")
+	private Movimientos movimiento;
+	
+	public Movimientos getMovimiento() {
+		return movimiento;
+	}
+	public void setMovimiento(Movimientos movimiento) {
+		this.movimiento = movimiento;
+	}
+	public String getFecha() {
+		return Fecha;
+	}
+	public void setFecha(String fecha) {
+		Fecha = fecha;
+	}
 	public int getID_Transferencia() {
 		return ID_Transferencia;
 	}

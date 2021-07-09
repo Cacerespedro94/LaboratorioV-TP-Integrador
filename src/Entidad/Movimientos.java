@@ -3,10 +3,14 @@ package Entidad;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,36 +21,53 @@ private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue
-	@Column(name="nroMovimiento")
 	private int nroMovimiento;
-	@Column(name="nroCuenta")
-	private int nroCuenta;
-	@Column(name="fecha")
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="CuentaOrigen")
+	private Cuentas cuenta=new Cuentas();
 	private String fecha;
-	@Column(name="detalle")
 	private String detalle;
-	@Column(name="importe")
 	private float importe;
-	@Column(name="tipoMovimiento")
-	private int tipoMovimiento;
-	@Column(name="cbuDestino")
-	private String cbuDestino;
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="TipoMovimiento")
+	private TipoMovimiento tipoMovimiento=new TipoMovimiento();
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="CuentaDestino")
+	private Cuentas cuentaDestino=new Cuentas();
 	
 	public Movimientos() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Cuentas getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Cuentas cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public TipoMovimiento getTipoMovimiento() {
+		return tipoMovimiento;
+	}
+
+	public void setTipoMovimiento(TipoMovimiento tipoMovimiento) {
+		this.tipoMovimiento = tipoMovimiento;
+	}
+
+	public Cuentas getCuentaDestino() {
+		return cuentaDestino;
+	}
+
+	public void setCuentaDestino(Cuentas cuentaDestino) {
+		this.cuentaDestino = cuentaDestino;
+	}
+
 	public int getNroMovimiento() {
 		return nroMovimiento;
 	}
 	public void setNroMovimiento(int nroMovimiento) {
 		this.nroMovimiento = nroMovimiento;
-	}
-	public int getNroCuenta() {
-		return nroCuenta;
-	}
-	public void setNroCuenta(int nroCuenta) {
-		this.nroCuenta = nroCuenta;
 	}
 	public String getFecha() {
 		return fecha;
@@ -66,35 +87,6 @@ private static final long serialVersionUID = 1L;
 	public void setImporte(float importe) {
 		this.importe = importe;
 	}
-	public int getTipoMovimiento() {
-		return tipoMovimiento;
-	}
-	public void setTipoMovimiento(int tipoMovimiento) {
-		this.tipoMovimiento = tipoMovimiento;
-	}
-	public String getCbuDestino() {
-		return cbuDestino;
-	}
-	public void setCbuDestino(String cbuDestino) {
-		this.cbuDestino = cbuDestino;
-	}
 	
-	
-	public Movimientos(int nroCuenta, String fecha, String detalle, float importe,
-			int tipoMovimiento, String cbuDestino) {
-		super();
-		this.nroCuenta = nroCuenta;
-		this.fecha = fecha;
-		this.detalle = detalle;
-		this.importe = importe;
-		this.tipoMovimiento = tipoMovimiento;
-		this.cbuDestino = cbuDestino;
-	}
 
-	@Override
-	public String toString() {
-		return "Movimientos [nroMovimiento=" + nroMovimiento + ", nroCuenta=" + nroCuenta + ", fecha=" + fecha
-				+ ", detalle=" + detalle + ", importe=" + importe + ", tipoMovimiento=" + tipoMovimiento
-				+ ", cbuDestino=" + cbuDestino + "]";
-	}
 }

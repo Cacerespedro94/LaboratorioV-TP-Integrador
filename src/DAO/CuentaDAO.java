@@ -19,7 +19,7 @@ public class CuentaDAO {
 		ConfigHibernate config=new ConfigHibernate();
 		Session session=config.abrirConexion();
     	session.beginTransaction();
-		session.saveOrUpdate(cuenta);
+		session.save(cuenta);
 		session.getTransaction().commit();
 		session.close();
 	}

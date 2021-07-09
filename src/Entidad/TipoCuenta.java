@@ -16,9 +16,7 @@ public class TipoCuenta  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	@Column(name="nroTipoDeCuenta")
 	private int nroTipoDeCuenta;
-	@Column(name="descripcion")
 	private String descripcion;
 	
 	public TipoCuenta() {

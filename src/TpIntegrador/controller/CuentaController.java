@@ -23,13 +23,10 @@ public class CuentaController {
 	public ModelAndView AltaCuenta(int ddlAltaCuentaTipoCuenta,String inputAltaCuentaCBU,String txtAltaCuentaSaldo){
 		CuentaNegocio neg=new CuentaNegocio();
 		  Cuentas cuenta = new Cuentas();
-		cuenta.setCodTipoCuenta(ddlAltaCuentaTipoCuenta);
 		cuenta.setCbu(inputAltaCuentaCBU);
 		cuenta.setSaldo(Float(txtAltaCuentaSaldo));
 		cuenta.setFechaCreacion(LocalDate.now().toString());
-		cuenta.setNombreUsuario("Usuario prueba");
-		cuenta.setNroCuenta(11);
-		cuenta.setEstado(15);
+
 		String Message="";
 	try{
 			

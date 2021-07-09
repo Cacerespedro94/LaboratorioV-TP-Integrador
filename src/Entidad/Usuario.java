@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 @Entity
 @Table(name="Usuarios")
@@ -12,56 +16,46 @@ public class Usuario implements Serializable {
 	
 		private static final long serialVersionUID = 1L;
 		@Id
-		@Column(name="nombreUsuario")
 		private String nombreUsuario;
-		@Column(name="contrasena")
 		private String contrasena;
-		@Column(name="codTipoUsuario")
-		private int codTipoUsuario;
-		@Column(name="dni")
-		private int dni;
-		@Column(name="cuil")
-		private int cuil;
-		@Column(name="sexo")
+		@ManyToOne(cascade = {CascadeType.ALL})
+		@JoinColumn(name="TipoUsuario")
+		private TipoUsuario tipoUsuario;
+		private String dni;
+		private String cuil;
 		private String sexo;
-		@Column(name="nacionalidad")
-		private String nacionalidad;
-		@Column(name="fechaNacimiento")
 		private String fechaNacimiento;
-		@Column(name="direccion")
 		private String direccion;
-		@Column(name="localidad")
-		private String localidad;
-		@Column(name="provincia")
-		private String provincia;
-		@Column(name="email")
+		private String localidad;	
+		@ManyToOne(cascade = {CascadeType.ALL})
+		@JoinColumn(name="idProvincia")
+		private Provincia provincia;
 		private String email;
-		@Column(name="telefono")
-		private int telefono;
-		@Column(name="nombre")
-		private String nombre;
-		@Column(name="apellido")
-		private String apellido;
-		@Column(name="estado")
-		private int estado;
+		private String telefono;	
+		private String nombre;	
+		private String apellido;		
+		private boolean estado;
+		
 		
 		public Usuario() {
 			
 		}
 		
-		
-		
-		public Usuario(String nombreUsuario, String contrasena, int codTipoUsuario, int dni, int cuil, String sexo,
-				String nacionalidad, String fechaNacimiento, String direccion, String localidad, String provincia,
-				String email, int telefono, String nombre, String apellido, int estado) {
+
+
+
+
+
+		public Usuario(String nombreUsuario, String contrasena, TipoUsuario tipoUsuario, String dni, String cuil,
+				String sexo, String fechaNacimiento, String direccion, String localidad, Provincia provincia,
+				String email, String telefono, String nombre, String apellido, boolean estado) {
 			super();
 			this.nombreUsuario = nombreUsuario;
 			this.contrasena = contrasena;
-			this.codTipoUsuario = codTipoUsuario;
+			this.tipoUsuario = tipoUsuario;
 			this.dni = dni;
 			this.cuil = cuil;
 			this.sexo = sexo;
-			this.nacionalidad = nacionalidad;
 			this.fechaNacimiento = fechaNacimiento;
 			this.direccion = direccion;
 			this.localidad = localidad;
@@ -73,6 +67,39 @@ public class Usuario implements Serializable {
 			this.estado = estado;
 		}
 
+
+
+
+
+
+		@Override
+		public String toString() {
+			return "Usuario [nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", tipoUsuario="
+					+ tipoUsuario + ", dni=" + dni + ", cuil=" + cuil + ", sexo=" + sexo + ", fechaNacimiento="
+					+ fechaNacimiento + ", direccion=" + direccion + ", localidad=" + localidad + ", provincia="
+					+ provincia + ", email=" + email + ", telefono=" + telefono + ", nombre=" + nombre + ", apellido="
+					+ apellido + ", estado=" + estado + "]";
+		}
+
+		public TipoUsuario getTipoUsuario() {
+			return tipoUsuario;
+		}
+
+
+		public void setTipoUsuario(TipoUsuario tipoUsuario) {
+			this.tipoUsuario = tipoUsuario;
+		}
+
+
+
+		public Provincia getProvincia() {
+			return provincia;
+		}
+
+
+		public void setProvincia(Provincia provincia) {
+			this.provincia = provincia;
+		}
 
 
 		public String getNombreUsuario() {
@@ -91,29 +118,43 @@ public class Usuario implements Serializable {
 			this.contrasena = contrasena;
 		}
 
-		public int getCodTipoUsuario() {
-			return codTipoUsuario;
-		}
-
-		public void setCodTipoUsuario(int codTipoUsuario) {
-			this.codTipoUsuario = codTipoUsuario;
-		}
-
-		public int getDni() {
+		public String getDni() {
 			return dni;
 		}
 
-		public void setDni(int dni) {
+
+		public void setDni(String dni) {
 			this.dni = dni;
 		}
 
-		public int getCuil() {
+		public String getCuil() {
 			return cuil;
 		}
 
-		public void setCuil(int cuil) {
+		public void setCuil(String cuil) {
 			this.cuil = cuil;
 		}
+
+
+		public String getTelefono() {
+			return telefono;
+		}
+
+
+		public void setTelefono(String telefono) {
+			this.telefono = telefono;
+		}
+
+
+		public boolean isEstado() {
+			return estado;
+		}
+
+
+		public void setEstado(boolean estado) {
+			this.estado = estado;
+		}
+
 
 		public String getSexo() {
 			return sexo;
@@ -123,13 +164,7 @@ public class Usuario implements Serializable {
 			this.sexo = sexo;
 		}
 
-		public String getNacionalidad() {
-			return nacionalidad;
-		}
 
-		public void setNacionalidad(String nacionalidad) {
-			this.nacionalidad = nacionalidad;
-		}
 
 		public String getFechaNacimiento() {
 			return fechaNacimiento;
@@ -155,13 +190,7 @@ public class Usuario implements Serializable {
 			this.localidad = localidad;
 		}
 
-		public String getProvincia() {
-			return provincia;
-		}
 
-		public void setProvincia(String provincia) {
-			this.provincia = provincia;
-		}
 
 		public String getEmail() {
 			return email;
@@ -171,13 +200,7 @@ public class Usuario implements Serializable {
 			this.email = email;
 		}
 
-		public int getTelefono() {
-			return telefono;
-		}
 
-		public void setTelefono(int telefono) {
-			this.telefono = telefono;
-		}
 
 		public String getNombre() {
 			return nombre;
@@ -195,20 +218,6 @@ public class Usuario implements Serializable {
 			this.apellido = apellido;
 		}
 
-		public int getEstado() {
-			return estado;
-		}
 
-		public void setEstado(int estado) {
-			this.estado = estado;
-		}
 
-		@Override
-		public String toString() {
-			return "Usuario [nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", codTipoUsuario="
-					+ codTipoUsuario + ", dni=" + dni + ", cuil=" + cuil + ", sexo=" + sexo + ", nacionalidad="
-					+ nacionalidad + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion
-					+ ", localidad=" + localidad + ", provincia=" + provincia + ", email=" + email + ", telefono="
-					+ telefono + ", nombre=" + nombre + ", apellido=" + apellido + ", estado=" + estado + "]";
-		}		
 	}
