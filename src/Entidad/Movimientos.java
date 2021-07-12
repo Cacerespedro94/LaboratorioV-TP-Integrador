@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,23 +21,26 @@ public class Movimientos implements Serializable {
 private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int nroMovimiento;
+	
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="CuentaOrigen")
 	private Cuentas cuenta=new Cuentas();
+	
 	private String fecha;
 	private String detalle;
 	private float importe;
+	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="TipoMovimiento")
 	private TipoMovimiento tipoMovimiento=new TipoMovimiento();
+	
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="CuentaDestino")
 	private Cuentas cuentaDestino=new Cuentas();
 	
 	public Movimientos() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Cuentas getCuenta() {
