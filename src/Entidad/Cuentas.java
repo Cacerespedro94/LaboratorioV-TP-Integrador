@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -16,34 +15,29 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Cuentas")
 public class Cuentas implements Serializable  {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Numero de Cuenta")
+	@GeneratedValue
 	private int nroCuenta;
-	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="Usuario")
-	@Column(name="Usuario")
 	private Usuario usuario;
-	
-	@Column(name="CBU")
 	private String cbu;
-	
-	@Column(name="Fecha de Creacion")
 	private String fechaCreacion;
-	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="idTipoCuenta")
-	@Column(name="idTipoCuenta")
 	private TipoCuenta tipoCuenta=new TipoCuenta();
 	
 	private boolean estado;
 	private float saldo;
+	
+	
+
+
+
 
 
 	@Override

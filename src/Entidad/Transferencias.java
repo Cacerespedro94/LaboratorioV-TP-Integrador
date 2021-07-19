@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -19,18 +18,14 @@ public class Transferencias implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Transeferencia")
+	@GeneratedValue
 	private int ID_Transferencia;
-	
 	private String CBU_Emisor;
 	private String CBU_Receptor;
 	private String Fecha;
 	private float Monto;
-	
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="Movimiento")
-	@Column(name="Movimiento")
 	private Movimientos movimiento;
 	
 	public Movimientos getMovimiento() {

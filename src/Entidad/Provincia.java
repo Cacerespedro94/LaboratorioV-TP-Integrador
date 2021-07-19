@@ -1,10 +1,8 @@
 package Entidad;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,16 +10,12 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Provincia {
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int idProvincia;
-	
 	private String Nombre;
-	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="Pais")
-	@Column(name="Pais")
 	private Pais pais;
 	
 	
@@ -33,6 +27,7 @@ public class Provincia {
 	}
 	public Provincia() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {

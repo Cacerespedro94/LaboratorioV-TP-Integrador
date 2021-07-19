@@ -22,7 +22,6 @@ public class CuentaDAO {
 		session.save(cuenta);
 		session.getTransaction().commit();
 		session.close();
-		config.cerrarSession();
 	}
 	
 }

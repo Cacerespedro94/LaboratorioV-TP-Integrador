@@ -3,8 +3,6 @@ package Entidad;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,28 +15,20 @@ import javax.persistence.Column;
 public class Usuario implements Serializable {
 	
 		private static final long serialVersionUID = 1L;
-		
 		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name="Usuario")
 		private String nombreUsuario;
 		private String contrasena;
-		
 		@ManyToOne(cascade = {CascadeType.ALL})
 		@JoinColumn(name="TipoUsuario")
-		@Column(name="TipoUsuario")
 		private TipoUsuario tipoUsuario;
-		
 		private String dni;
 		private String cuil;
 		private String sexo;
 		private String fechaNacimiento;
 		private String direccion;
-		private String localidad;
-		
+		private String localidad;	
 		@ManyToOne(cascade = {CascadeType.ALL})
 		@JoinColumn(name="idProvincia")
-		@Column(name="idProvincia")
 		private Provincia provincia;
 		private String email;
 		private String telefono;	
@@ -51,6 +41,11 @@ public class Usuario implements Serializable {
 			
 		}
 		
+
+
+
+
+
 		public Usuario(String nombreUsuario, String contrasena, TipoUsuario tipoUsuario, String dni, String cuil,
 				String sexo, String fechaNacimiento, String direccion, String localidad, Provincia provincia,
 				String email, String telefono, String nombre, String apellido, boolean estado) {
@@ -71,6 +66,10 @@ public class Usuario implements Serializable {
 			this.apellido = apellido;
 			this.estado = estado;
 		}
+
+
+
+
 
 
 		@Override
