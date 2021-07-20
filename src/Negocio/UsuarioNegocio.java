@@ -1,27 +1,28 @@
 package Negocio;
 
-import DAO.UsuarioDAO;
+import java.util.List;
 
+
+import DAO.UsuarioDAO;
 import Entidad.Usuario;
 import InterfacesNegocio.UsuarioInterfazNegocio;
 
 public class UsuarioNegocio implements UsuarioInterfazNegocio{
-	
-	
+
+
 	static UsuarioDAO usuarioDao;
 	static Usuario usuarioLogueado;
 
 	public UsuarioDAO getUsuarioDao() {
 		return usuarioDao;
 	}
-	
+
+	UsuarioDAO dao = new UsuarioDAO();
+
 	@Override
 	public boolean altaUsuario(Usuario usuario) {
-		
-		UsuarioDAO dao=new UsuarioDAO();
 		if(dao.altaUsuario(usuario))return true;
 		else return false;
-		
 	}
 
 	@Override
@@ -39,8 +40,8 @@ public class UsuarioNegocio implements UsuarioInterfazNegocio{
 	@Override
 	public Usuario getUsuarioByNombreUsuario(String usuario) {
 		// TODO Auto-generated method stub
-		Usuario _usuario = (Usuario) usuarioDao.getUsuarioByNombreUsuario(usuario); 
-		return _usuario; 
+		Usuario _usuario = (Usuario) usuarioDao.getUsuarioByNombreUsuario(usuario);
+		return _usuario;
 	}
 
 	@Override
