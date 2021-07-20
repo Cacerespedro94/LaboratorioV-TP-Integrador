@@ -33,8 +33,14 @@ public class ConfigHibernate {
 	public Session abrirConexion()
 	{
 		session=sessionFactory.openSession();
-		return session;
 		datosEjemplo();
+		return session;
+		
+	}
+	
+	public Session getConexion()
+	{
+		return session;
 	}
 	
 	public void cerrarSession()

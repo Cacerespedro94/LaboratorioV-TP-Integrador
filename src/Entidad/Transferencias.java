@@ -1,10 +1,9 @@
 package Entidad;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.sql.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,43 +19,65 @@ public class Transferencias implements Serializable{
 	@Id
 	@GeneratedValue
 	private int ID_Transferencia;
-	private String CBU_Emisor;
-	private String CBU_Receptor;
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="id_cuenta_origen")
+	private Cuentas CuentaOrigen; 
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="id_cuenta_destino")
+	private Cuentas CuentaDestino; 
 	private String Fecha;
+	private String Detalle;
 	private float Monto;
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="Movimiento")
 	private Movimientos movimiento;
 	
-	public Movimientos getMovimiento() {
-		return movimiento;
-	}
-	public void setMovimiento(Movimientos movimiento) {
+	
+	
+	
+	public Transferencias(int iD_Transferencia, Cuentas cuentaOrigen, Cuentas cuentaDestino, String fecha,
+			String detalle, float monto, Movimientos movimiento) {
+		super();
+		ID_Transferencia = iD_Transferencia;
+		CuentaOrigen = cuentaOrigen;
+		CuentaDestino = cuentaDestino;
+		Fecha = fecha;
+		Detalle = detalle;
+		Monto = monto;
 		this.movimiento = movimiento;
 	}
-	public String getFecha() {
-		return Fecha;
-	}
-	public void setFecha(String fecha) {
-		Fecha = fecha;
-	}
+	
+	
 	public int getID_Transferencia() {
 		return ID_Transferencia;
 	}
 	public void setID_Transferencia(int iD_Transferencia) {
 		ID_Transferencia = iD_Transferencia;
 	}
-	public String getCBU_Emisor() {
-		return CBU_Emisor;
+	public Cuentas getCuentaOrigen() {
+		return CuentaOrigen;
 	}
-	public void setCBU_Emisor(String cBU_Emisor) {
-		CBU_Emisor = cBU_Emisor;
+	public void setCuentaOrigen(Cuentas cuentaOrigen) {
+		CuentaOrigen = cuentaOrigen;
 	}
-	public String getCBU_Receptor() {
-		return CBU_Receptor;
+	public Cuentas getCuentaDestino() {
+		return CuentaDestino;
 	}
-	public void setCBU_Receptor(String cBU_Receptor) {
-		CBU_Receptor = cBU_Receptor;
+	public void setCuentaDestino(Cuentas cuentaDestino) {
+		CuentaDestino = cuentaDestino;
+	}
+	public String getFecha() {
+		return Fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.Fecha = fecha;
+	}
+	public String getDetalle() {
+		return Detalle;
+	}
+	public void setDetalle(String detalle) {
+		Detalle = detalle;
 	}
 	public float getMonto() {
 		return Monto;
@@ -64,19 +85,22 @@ public class Transferencias implements Serializable{
 	public void setMonto(float monto) {
 		Monto = monto;
 	}
-	
-	public Transferencias(String cBU_Emisor, String cBU_Receptor, float monto) {
-
-		
-		CBU_Emisor = cBU_Emisor;
-		CBU_Receptor = cBU_Receptor;
-		Monto = monto;
+	public Movimientos getMovimiento() {
+		return movimiento;
 	}
+	public void setMovimiento(Movimientos movimiento) {
+		this.movimiento = movimiento;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Transferencias [ID_Transferencia=" + ID_Transferencia + ", CBU_Emisor=" + CBU_Emisor + ", CBU_Receptor="
-				+ CBU_Receptor + ", Monto=" + Monto + "]";
+		return "Transferencias [ID_Transferencia=" + ID_Transferencia + ", CuentaOrigen=" + CuentaOrigen
+				+ ", CuentaDestino=" + CuentaDestino + ", Fecha=" + Fecha + ", Detalle=" + Detalle + ", Monto=" + Monto
+				+ ", movimiento=" + movimiento + "]";
 	}
+	
+	
 	
 	
 	
