@@ -51,5 +51,11 @@ public class UsuarioNegocio implements UsuarioInterfazNegocio{
 		return true;
 	}
 
+	@Override
+	public List<Usuario> getUsuariosActivos() {
+		// TODO Auto-generated method stub
+		return usuarioDao.getUsuariosActivos();
+	}
+
 
 }

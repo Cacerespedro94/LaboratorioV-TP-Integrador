@@ -30,7 +30,9 @@
                     <li class="nav-item">
                         <a class="nav-link">Inicio</a>
                     </li>            
-                    
+                     <li class="nav-item">
+                        <a class="nav-link" href="listarUsuarios.html">Clientes</a>
+                    </li>    
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Usuarios

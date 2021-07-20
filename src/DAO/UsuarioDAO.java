@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import DAO.ConfigHibernate;
 import Entidad.Usuario;
 import InterfacesDAO.UsuarioInterfaz;
-import TpIntegrador.controller.Cliente;
+
 
 
 public class UsuarioDAO implements UsuarioInterfaz {
@@ -57,7 +57,7 @@ public class UsuarioDAO implements UsuarioInterfaz {
 	{
 		Session session=ch.abrirConexion();
     	Criteria cr = session.createCriteria(Usuario.class);
-    	cr.add(Restrictions.eq("estado", true));
+    	cr.add(Restrictions.eq("estado", false));
     	List<Usuario> results = cr.list();
     	return results;
 	}

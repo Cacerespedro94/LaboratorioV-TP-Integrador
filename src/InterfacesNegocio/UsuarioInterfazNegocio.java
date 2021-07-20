@@ -1,6 +1,8 @@
 package InterfacesNegocio;
 
 
+import java.util.List;
+
 import Entidad.Usuario;
 
 public interface UsuarioInterfazNegocio {
@@ -14,5 +16,7 @@ public interface UsuarioInterfazNegocio {
 	public Usuario getUsuarioByNombreUsuario(String usuario);
 	
     public boolean GuardarUsuario(Usuario usuarioNuevo);
+    
+    public List<Usuario> getUsuariosActivos();
 	
 }

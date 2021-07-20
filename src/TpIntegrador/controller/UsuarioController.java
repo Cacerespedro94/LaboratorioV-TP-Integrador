@@ -91,8 +91,9 @@ public class UsuarioController {
 	public ModelAndView listarClientes() {
 		
 			ModelAndView MV = new ModelAndView();
+			UsuarioNegocio neg=new UsuarioNegocio();
 			MV.setViewName("UsuariosLista");
-			List<Usuario> listaUsuarios = UsuarioNegocio.getUsuariosActivos();
+			List<Usuario> listaUsuarios = neg.getUsuariosActivos();
 			MV.addObject("listaUsuarios", listaUsuarios);
 			
 		return MV;
