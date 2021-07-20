@@ -87,7 +87,6 @@ public class UsuarioController {
 		return MV;
 	}
 	
-	
 	@RequestMapping(value = "listarUsuarios.html", method = RequestMethod.GET)
 	public ModelAndView listarClientes() {
 		
