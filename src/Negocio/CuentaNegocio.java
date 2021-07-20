@@ -4,6 +4,7 @@ import java.util.List;
 
 import DAO.CuentaDAO;
 import Entidad.Cuentas;
+import Entidad.Usuario;
 import InterfacesNegocio.CuentaInterfazNegocio;
 
 public class CuentaNegocio implements CuentaInterfazNegocio {
@@ -37,5 +38,11 @@ public class CuentaNegocio implements CuentaInterfazNegocio {
 		// TODO Auto-generated method stub
 		Cuentas cuenta = dao.obtenerCuenta(cbu);
 		return cuenta;
+	}
+
+	@Override
+	public boolean checkCuentaByUsuario(Usuario usuarioLogueado, String num_cuenta) {
+		// TODO Auto-generated method stub
+		return dao.checkCuentaIsFromUsuarioLogueado(usuarioLogueado, num_cuenta);
 	}
 }

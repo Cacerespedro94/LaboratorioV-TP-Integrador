@@ -11,13 +11,17 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 import Entidad.Cuentas;
 import InterfacesDAO.CuentaInterfaz;
+import Entidad.Usuario;
 import DAO.ConfigHibernate;
 import Entidad.Cuentas;
+
 public class CuentaDAO implements CuentaInterfaz {
+	
 	private static ConfigHibernate ch;
 	public static Session session;
 	
 
+	@Override
     public void altaCuenta (Cuentas cuenta)
     {
     	Session session = ch.abrirConexion();
@@ -25,7 +29,8 @@ public class CuentaDAO implements CuentaInterfaz {
     	session.save(cuenta);
     	session.getTransaction().commit();
     }
-    
+	
+	@Override
 	public void modificarCuenta(Cuentas cuenta) {
 		session = ch.abrirConexion();
 		session.beginTransaction();
@@ -33,6 +38,7 @@ public class CuentaDAO implements CuentaInterfaz {
     	session.getTransaction().commit();
 	}
     
+	@Override
     public void eliminarCuenta(Cuentas cuenta) {
 		
 		
@@ -50,6 +56,7 @@ public class CuentaDAO implements CuentaInterfaz {
 		session.getTransaction().commit();
 	}
     
+	@Override
 	public List<Cuentas> obtenerCuentasPorCliente(int idCliente) // Ejemplo de metodo para traer datos por HQL
 	{	   
 		Session session = ch.abrirConexion();
@@ -65,7 +72,7 @@ public class CuentaDAO implements CuentaInterfaz {
 		return listaCuentas; 
 	}
 	
-    
+	@Override
     public Cuentas obtenerCuenta(String cbu) {
 		Session session = ch.abrirConexion();		 
 		String hql = "FROM Cuentas WHERE cbu = :cbu";
@@ -78,6 +85,27 @@ public class CuentaDAO implements CuentaInterfaz {
 		
 	}
     
+	//HAY QUE REVISAR ESTA QUERY
+	
+	@Override
+	public boolean checkCuentaIsFromUsuarioLogueado(Usuario usuarioLogueado, String num_cuenta) // Ejemplo de metodo para traer datos por HQL
+	{	   
+		Session session = ch.getConexion();
+		String hql = " FROM Cuentas as cue INNER JOIN cue.cliente as cli INNER JOIN cli.usuario as usr WHERE cue.num_cuenta = :num_cuenta AND cue.eliminado = 0";
+		Query q = session.createQuery(hql);
+		q.setParameter("num_cuenta", num_cuenta);
+		Object[] resultado = (Object[]) q.uniqueResult();
+		boolean esCuentaDelUsuarioLogueado = false;
+		if(resultado != null) {
+			Usuario usr = (Usuario) resultado[2];
+			if(usr.getId() == usuarioLogueado.getId()) {
+				esCuentaDelUsuarioLogueado = true;
+			}
+		}
+		
+		return esCuentaDelUsuarioLogueado;
+		
+	}
     
 	
 }
