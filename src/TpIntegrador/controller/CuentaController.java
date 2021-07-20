@@ -26,7 +26,10 @@ public class CuentaController {
 		cuenta.setCbu(model.getCbu());
 		cuenta.setSaldo(model.getSaldo());
 		cuenta.setFechaCreacion(LocalDate.now().toString());
-
+		cuenta.setNroCuenta(model.getNroCuenta());
+		cuenta.setUsuario(model.getUsuario());
+		cuenta.setTipoCuenta(model.getTipoCuenta());
+		cuenta.setEstado(true);
 		String Message="";
 	try{
 			
