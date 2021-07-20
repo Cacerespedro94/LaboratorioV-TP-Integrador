@@ -3,6 +3,8 @@ package Entidad;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,6 +19,8 @@ public class Usuario implements Serializable {
 	
 		private static final long serialVersionUID = 1L;
 		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private int id;
 		private String nombreUsuario;
 		private String contrasena;
 		@ManyToOne(cascade = {CascadeType.ALL})
@@ -44,10 +48,11 @@ public class Usuario implements Serializable {
 
 
 
-		public Usuario(String nombreUsuario, String contrasena, TipoUsuario tipoUsuario, String dni, String cuil,
+		public Usuario(int id, String nombreUsuario, String contrasena, TipoUsuario tipoUsuario, String dni, String cuil,
 				String sexo, String fechaNacimiento, String direccion, String localidad, Provincia provincia,
 				String email, String telefono, String nombre, String apellido, boolean estado) {
 			super();
+			this.id = id;
 			this.nombreUsuario = nombreUsuario;
 			this.contrasena = contrasena;
 			this.tipoUsuario = tipoUsuario;
@@ -66,13 +71,9 @@ public class Usuario implements Serializable {
 		}
 
 
-
-
-
-
 		@Override
 		public String toString() {
-			return "Usuario [nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", tipoUsuario="
+			return "Usuario [id="+ id +", nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", tipoUsuario="
 					+ tipoUsuario + ", dni=" + dni + ", cuil=" + cuil + ", sexo=" + sexo + ", fechaNacimiento="
 					+ fechaNacimiento + ", direccion=" + direccion + ", localidad=" + localidad + ", provincia="
 					+ provincia + ", email=" + email + ", telefono=" + telefono + ", nombre=" + nombre + ", apellido="
@@ -189,7 +190,6 @@ public class Usuario implements Serializable {
 		}
 
 
-
 		public String getEmail() {
 			return email;
 		}
@@ -197,7 +197,6 @@ public class Usuario implements Serializable {
 		public void setEmail(String email) {
 			this.email = email;
 		}
-
 
 
 		public String getNombre() {
@@ -215,7 +214,10 @@ public class Usuario implements Serializable {
 		public void setApellido(String apellido) {
 			this.apellido = apellido;
 		}
-
+		
+		public int getId() {
+			return id;
+		}
 
 
 	}
