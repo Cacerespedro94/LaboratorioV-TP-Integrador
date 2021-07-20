@@ -37,6 +37,13 @@ public class CuentaDAO {
     	session.getTransaction().commit();
     }
     
+	public void modificarCuenta(Cuenta cuenta) {
+		session = ch.getConexion();
+		session.beginTransaction();
+    	session.update(cuenta);
+    	session.getTransaction().commit();
+	}
+    
     public void eliminarCuenta(Cuentas cuenta) {
 		
 		
@@ -53,6 +60,7 @@ public class CuentaDAO {
 	    
 		session.getTransaction().commit();
 	}
+    
    
 	
 }
