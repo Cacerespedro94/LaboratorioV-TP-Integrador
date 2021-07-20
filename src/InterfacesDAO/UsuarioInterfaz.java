@@ -4,7 +4,7 @@ import Entidad.Usuario;
 
 public interface UsuarioInterfaz {
 	 
-    public void altaUsuario (Usuario user);
+    public boolean altaUsuario (Usuario user);
 
 	public Usuario getUsuarioXid (int id);
 

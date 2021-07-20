@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+
 import Entidad.Usuario;
 import InterfacesDAO.UsuarioInterfaz;
 ;
@@ -18,14 +19,24 @@ public class UsuarioDAO implements UsuarioInterfaz {
 	}
 	
 	@Override
-    public void altaUsuario (Usuario user)
+    public boolean altaUsuario (Usuario user)
     {
-		ConfigHibernate config= new ConfigHibernate();
-		Session session=config.abrirConexion();
-		session.beginTransaction();
-		session.save(user);
-		session.getTransaction().commit();
-		session.close();
+		
+			ConfigHibernate config= new ConfigHibernate();
+			Session session=config.abrirConexion();
+			session.beginTransaction();
+			session.save(user);
+			try{
+				session.getTransaction().commit();
+				return true;
+				
+			}catch(Exception ex){
+				ex.printStackTrace();
+				return false;
+			}
+			finally{
+				session.close();
+			}			
     }
 	
 	@Override
@@ -35,6 +46,7 @@ public class UsuarioDAO implements UsuarioInterfaz {
 		Session session = config.abrirConexion();
 		return (Usuario)session.get(Usuario.class,id); 
 	}
+	
 	
 	@Override
 	public void modificarUsuario (Usuario user) {
