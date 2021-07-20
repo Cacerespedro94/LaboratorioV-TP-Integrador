@@ -63,7 +63,7 @@ public class UsuarioController {
 		nuevoCliente.setDni(TXTdni);
 		nuevoCliente.setFechaNacimiento(TXTfecha);
 		nuevoCliente.setSexo(TXTsexo);
-		NuevaProvincia.setNombre(TXTprovincia);;
+		NuevaProvincia.setNombre(TXTprovincia);
 		nuevoCliente.setProvincia(NuevaProvincia);
 		nuevoCliente.setLocalidad(TXTlocalidad);
 		nuevoCliente.setDireccion(TXTdomicilio);
@@ -96,6 +96,31 @@ public class UsuarioController {
 			List<Usuario> listaUsuarios = neg.getUsuariosActivos();
 			MV.addObject("listaUsuarios", listaUsuarios);
 			
+		return MV;
+	}
+	
+	@RequestMapping(value = "ModificacionUsuario.html", method = RequestMethod.POST)
+	public ModelAndView modificarCliente(@RequestParam(required = false)
+			String TXTnombre, String TXTapellido, String TXTdni,
+			String TXTfecha, String TXTsexo, String TXTprovincia, String TXTlocalidad,
+			String TXTdomicilio, String TXTtelefono,String TXTcuil, String TXTemail) {
+		
+		ModelAndView MV = new ModelAndView();
+		UsuarioNegocio neg=new UsuarioNegocio();
+		Usuario u = neg.getUsuarioLogueado();
+		
+		if(neg.validarUsuario(TXTnombre, TXTapellido, TXTdni, TXTfecha, TXTsexo,
+				TXTprovincia, TXTlocalidad, TXTdomicilio, TXTtelefono, TXTcuil, TXTemail)) {
+
+		u = neg.parametrizarUsuario(TXTnombre, TXTapellido, TXTdni, TXTfecha, TXTsexo,
+				TXTprovincia, TXTlocalidad, TXTdomicilio, TXTtelefono, TXTcuil, TXTemail);
+
+		neg.modificarUsuario(u);
+		MV.setViewName("Usuario Modificado Correctamente");
+		} else {
+			MV.setViewName("Datos de Usuario incorrectos");
+		}
+ 
 		return MV;
 	}
 	

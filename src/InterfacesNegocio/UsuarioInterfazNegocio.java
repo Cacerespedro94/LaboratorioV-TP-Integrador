@@ -18,5 +18,7 @@ public interface UsuarioInterfazNegocio {
     public boolean GuardarUsuario(Usuario usuarioNuevo);
     
     public List<Usuario> getUsuariosActivos();
+
+	void modificarUsuario(Usuario user);
 	
 }

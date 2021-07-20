@@ -2,8 +2,10 @@ package Negocio;
 
 import java.util.List;
 
+import org.hibernate.Session;
 
 import DAO.UsuarioDAO;
+import Entidad.Provincia;
 import Entidad.Usuario;
 import InterfacesNegocio.UsuarioInterfazNegocio;
 
@@ -27,35 +29,76 @@ public class UsuarioNegocio implements UsuarioInterfazNegocio{
 
 	@Override
 	public Usuario getUsuarioLogueado() {
-		// TODO Auto-generated method stub
 		return usuarioLogueado;
 	}
 
 	@Override
 	public void setUsuarioLogueado(Usuario usuarioLogueado) {
-		// TODO Auto-generated method stub
 		UsuarioNegocio.usuarioLogueado = usuarioLogueado;
 	}
 
 	@Override
 	public Usuario getUsuarioByNombreUsuario(String usuario) {
-		// TODO Auto-generated method stub
 		Usuario _usuario = (Usuario) usuarioDao.getUsuarioByNombreUsuario(usuario);
 		return _usuario;
 	}
 
 	@Override
 	public boolean GuardarUsuario(Usuario usuarioNuevo) {
-		// TODO Auto-generated method stub
 		usuarioDao.guardarUsuario(usuarioNuevo);
 		return true;
 	}
 
 	@Override
 	public List<Usuario> getUsuariosActivos() {
-		// TODO Auto-generated method stub
 		return usuarioDao.getUsuariosActivos();
 	}
+	
+	@Override
+	public void modificarUsuario (Usuario user) {
+		dao.modificarUsuario(user);
+	}
+	
+	 public Usuario parametrizarUsuario(String nombre, String apellido, String dni,
+				String fecha, String sexo, String provincia, String localidad,
+				String domicilio, String telefono, String cuil, String email) {
+	    	
+	    	Usuario u = new Usuario();
+	    	Provincia nuevaProvincia = new Provincia();
+	    	
+	    	if (nombre != null) u.setNombre(nombre);
+	    	if (apellido != null) u.setApellido(apellido);
+	    	if (dni != null) u.setDni(dni);
+	    	if (fecha != null) u.setFechaNacimiento(fecha);
+	    	if (sexo != null) u.setSexo(sexo);
+	    	if (provincia != null) nuevaProvincia.setNombre(provincia);
+	    	u.setProvincia(nuevaProvincia);
+	    	if (localidad != null) u.setLocalidad(localidad);
+	    	if (domicilio != null) u.setDireccion(domicilio);
+	    	if (telefono != null) u.setTelefono(telefono);
+	    	if (email != null) u.setEmail(email);
+	    	
+			return u; 
+	    }
+	 
+	 public boolean validarUsuario(String nombre, String apellido, String dni,
+				String fecha, String sexo, String provincia, String localidad,
+				String domicilio, String telefono, String cuil, String email) {
+	    	  
+	    	if (nombre == null) return false;
+	    	if (apellido == null) return false;
+	    	if (dni == null) return false;
+	    	if (fecha == null) return false;
+	    	if (sexo == null) return false;
+	    	if (provincia == null) return false;
+	    	if (localidad == null) return false;
+	    	if (domicilio == null) return false;
+	    	if (telefono == null) return false;
+	    	if (cuil == null) return false;
+	    	if (email == null) return false;
+	    	
+			return true; 
+	    }
 
 
 }

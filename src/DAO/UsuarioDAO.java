@@ -31,7 +31,7 @@ public class UsuarioDAO implements UsuarioInterfaz {
 	}
 
 	@Override
-	public Usuario getUsuarioByNombreUsuario(String usuario) // Ejemplo de metodo para traer datos por HQL
+	public Usuario getUsuarioByNombreUsuario(String usuario)
 	{
 		String hql = "FROM Usuario WHERE nombre = :usuario";
 		Session session = ch.getConexion();
@@ -53,8 +53,7 @@ public class UsuarioDAO implements UsuarioInterfaz {
     }
 
 	@Override
-	public List<Usuario> getUsuariosActivos() // Ejemplo de metodo para traer datos por HQL
-	{
+	public List<Usuario> getUsuariosActivos() {
 		Session session=ch.abrirConexion();
     	Criteria cr = session.createCriteria(Usuario.class);
     	cr.add(Restrictions.eq("estado", false));
@@ -111,6 +110,7 @@ public class UsuarioDAO implements UsuarioInterfaz {
     	session.getTransaction().commit();
 	}
 
+	
 
 
 }
