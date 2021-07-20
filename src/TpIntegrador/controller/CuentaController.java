@@ -20,11 +20,11 @@ public class CuentaController {
 	}
 
 	@RequestMapping("AltaCuenta.html")
-	public ModelAndView AltaCuenta(int ddlAltaCuentaTipoCuenta,String inputAltaCuentaCBU,String txtAltaCuentaSaldo){
+	public ModelAndView AltaCuenta(Cuentas model){
 		CuentaNegocio neg=new CuentaNegocio();
 		  Cuentas cuenta = new Cuentas();
-		cuenta.setCbu(inputAltaCuentaCBU);
-		cuenta.setSaldo(Float(txtAltaCuentaSaldo));
+		cuenta.setCbu(model.getCbu());
+		cuenta.setSaldo(model.getSaldo());
 		cuenta.setFechaCreacion(LocalDate.now().toString());
 
 		String Message="";

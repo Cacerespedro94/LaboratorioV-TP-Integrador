@@ -34,7 +34,6 @@ public class ConfigHibernate {
 	{
 		session=sessionFactory.openSession();
 		return session;
-		datosEjemplo();
 	}
 	
 	public void cerrarSession()
