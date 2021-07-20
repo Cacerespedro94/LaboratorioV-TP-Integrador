@@ -20,4 +20,13 @@ public class UsuarioController {
 		MV.setViewName("LogIn"); 
 		return MV;
 	}
+	
+	@RequestMapping("irAltaUsuario.html")
+	public ModelAndView redireccionAltaUsuario(){
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("AltaCliente"); 
+		return MV;
+	}
+	
+	
 }
