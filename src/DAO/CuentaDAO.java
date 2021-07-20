@@ -13,6 +13,7 @@ import entidades.Cuenta;
 public class CuentaDAO {
 	private static ConfigHibernate ch;
 	public static Session session;
+	
 	public void altaCuenta(Cuentas cuenta) {
 		
 	/*	Configuration configuration = new Configuration();
@@ -28,6 +29,14 @@ public class CuentaDAO {
 		session.close();
 	}
 	
+    public void altaCuenta (Cuentas cuenta)
+    {
+    	Session session = ch.getConexion();
+		session.beginTransaction();
+    	session.save(cuenta);
+    	session.getTransaction().commit();
+    }
+    
     public void eliminarCuenta(Cuentas cuenta) {
 		
 		
