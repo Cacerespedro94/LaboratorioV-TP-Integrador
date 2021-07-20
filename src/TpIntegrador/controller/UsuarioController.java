@@ -1,6 +1,7 @@
 package TpIntegrador.controller;
 
-import org.jboss.logging.Message;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -85,5 +86,18 @@ public class UsuarioController {
 		
 		return MV;
 	}
+	
+	
+	@RequestMapping(value = "listarUsuarios.html", method = RequestMethod.GET)
+	public ModelAndView listarClientes() {
+		
+			ModelAndView MV = new ModelAndView();
+			MV.setViewName("UsuariosLista");
+			List<Usuario> listaUsuarios = UsuarioNegocio.getUsuariosActivos();
+			MV.addObject("listaUsuarios", listaUsuarios);
+			
+		return MV;
+	}
+	
 	
 }

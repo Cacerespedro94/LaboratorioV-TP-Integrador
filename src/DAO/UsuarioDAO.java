@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 
 import Entidad.Usuario;
 import InterfacesDAO.UsuarioInterfaz;
+import TpIntegrador.controller.Cliente;
 ;
 
 public class UsuarioDAO implements UsuarioInterfaz {
@@ -69,7 +70,7 @@ public class UsuarioDAO implements UsuarioInterfaz {
     	session.getTransaction().commit();
 	}
 	
-	public static List<Usuario> getUsuariosActivos() // Ejemplo de metodo para traer datos por HQL
+	public List<Usuario> getUsuariosActivos()
 	{	   
 		ConfigHibernate config= new ConfigHibernate();
 		Session session=config.abrirConexion();
