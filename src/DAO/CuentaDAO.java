@@ -2,6 +2,7 @@ package DAO;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -10,9 +11,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 import Entidad.Cuentas;
 import InterfacesDAO.CuentaInterfaz;
-import dao.ConfigHibernate;
-import dao.Query;
-import entidades.Cuenta;
+import DAO.ConfigHibernate;
+import Entidad.Cuentas;
 public class CuentaDAO implements CuentaInterfaz {
 	private static ConfigHibernate ch;
 	public static Session session;
@@ -43,7 +43,7 @@ public class CuentaDAO implements CuentaInterfaz {
    	
 		String hql = "UPDATE Cuenta SET estado = false WHERE nroCuenta = :nroCuenta";
 		
-		Query q = session.createQuery(hql);
+		Query q = (Query) session.createQuery(hql);
 		q.setParameter("nroCuenta",nroCuenta);
 	    q.executeUpdate();
 	    
@@ -54,7 +54,7 @@ public class CuentaDAO implements CuentaInterfaz {
 	{	   
 		Session session = ch.abrirConexion();
 		String hql = "FROM Cuentas WHERE Usuario = :idCliente AND estado = true";
-		Query q = session.createQuery(hql);
+		Query q = (Query) session.createQuery(hql);
 		q.setParameter("Usuario", idCliente);
 		List<Cuentas> listaCuentas = q.list();    
 		
@@ -69,7 +69,7 @@ public class CuentaDAO implements CuentaInterfaz {
     public Cuentas obtenerCuenta(String cbu) {
 		Session session = ch.abrirConexion();		 
 		String hql = "FROM Cuentas WHERE cbu = :cbu";
-		Query q = session.createQuery(hql);
+		Query q = (Query) session.createQuery(hql);
 		q.setParameter("cbu", cbu);
 		
 		Cuentas cuenta = (Cuentas) q.uniqueResult();
