@@ -101,18 +101,19 @@ public class UsuarioController {
 	
 	@RequestMapping(value = "ModificacionUsuario.html", method = RequestMethod.POST)
 	public ModelAndView modificarCliente(@RequestParam(required = false)
-			String TXTnombre, String TXTapellido, String TXTdni,
+			int TXTid, String TXTnombre, String TXTapellido, String TXTdni,
 			String TXTfecha, String TXTsexo, String TXTprovincia, String TXTlocalidad,
 			String TXTdomicilio, String TXTtelefono,String TXTcuil, String TXTemail) {
 		
 		ModelAndView MV = new ModelAndView();
 		UsuarioNegocio neg=new UsuarioNegocio();
+		String Mensaje="";
 		Usuario u = neg.getUsuarioLogueado();
 		
 		if(neg.validarUsuario(TXTnombre, TXTapellido, TXTdni, TXTfecha, TXTsexo,
 				TXTprovincia, TXTlocalidad, TXTdomicilio, TXTtelefono, TXTcuil, TXTemail)) {
 
-		u = neg.parametrizarUsuario(TXTnombre, TXTapellido, TXTdni, TXTfecha, TXTsexo,
+		u = neg.parametrizarUsuario(TXTid, TXTnombre, TXTapellido, TXTdni, TXTfecha, TXTsexo,
 				TXTprovincia, TXTlocalidad, TXTdomicilio, TXTtelefono, TXTcuil, TXTemail);
 
 		neg.modificarUsuario(u);

@@ -8,6 +8,7 @@ import DAO.UsuarioDAO;
 import Entidad.Provincia;
 import Entidad.Usuario;
 import InterfacesNegocio.UsuarioInterfazNegocio;
+import entidades.Cliente;
 
 public class UsuarioNegocio implements UsuarioInterfazNegocio{
 
@@ -25,6 +26,11 @@ public class UsuarioNegocio implements UsuarioInterfazNegocio{
 	public boolean altaUsuario(Usuario usuario) {
 		if(dao.altaUsuario(usuario))return true;
 		else return false;
+	}
+	
+	public Usuario getUsuarioxId(int id) {
+		 
+		return usuarioDao.getUsuarioXid(id);
 	}
 
 	@Override
@@ -59,12 +65,13 @@ public class UsuarioNegocio implements UsuarioInterfazNegocio{
 		dao.modificarUsuario(user);
 	}
 	
-	 public Usuario parametrizarUsuario(String nombre, String apellido, String dni,
+	 public Usuario parametrizarUsuario(int id, String nombre, String apellido, String dni,
 				String fecha, String sexo, String provincia, String localidad,
 				String domicilio, String telefono, String cuil, String email) {
 	    	
-	    	Usuario u = new Usuario();
+	    	Usuario u = usuarioDao.getUsuarioXid(id);
 	    	Provincia nuevaProvincia = new Provincia();
+	    	
 	    	
 	    	if (nombre != null) u.setNombre(nombre);
 	    	if (apellido != null) u.setApellido(apellido);
