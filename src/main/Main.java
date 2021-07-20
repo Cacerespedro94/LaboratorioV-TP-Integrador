@@ -27,7 +27,7 @@ public class Main
 
     	session.beginTransaction();
  
-    	
+    
     	TipoCuenta tipoCuenta1 = new TipoCuenta("Caja de ahorro en Pesos");
     	TipoCuenta tipoCuenta2 = new TipoCuenta("Caja de ahorro en Dolares");
     	TipoCuenta tipoCuenta3 = new TipoCuenta("Cuenta Corriente");
@@ -68,7 +68,25 @@ public class Main
     	user1.setProvincia(provincia);
     	user1.setTelefono("0112345678");
     	
+    	Usuario user2=new Usuario();
+    	user1.setNombreUsuario("Juan12");
+    	user1.setContrasena("1234");
+    	user1.setNombre("Juan");
+    	user1.setApellido("MArtinez");
+    	user1.setDni("11111111");
+    	user1.setFechaNacimiento("10/07/1997");
+    	user1.setCuil("20111111115");
+    	user1.setDireccion("SiempreHonesta 123");
+    	user1.setEmail("Juancito@hotmail.com");
+    	user1.setLocalidad("San Isidro");
+    	user1.setSexo("M");
+    	user1.setEstado(true);
+    	user1.setTipoUsuario(tipoUsuario2);
+    	user1.setProvincia(provincia);
+    	user1.setTelefono("1545873325");
+    	
     	session.save(user1);
+    	session.save(user2);
     	
     	Cuentas cuenta1=new Cuentas();
     	cuenta1.setCbu("123456");

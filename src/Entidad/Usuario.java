@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+
 @Entity
 @Table(name="Usuarios")
 public class Usuario implements Serializable {
@@ -40,9 +41,6 @@ public class Usuario implements Serializable {
 		public Usuario() {
 			
 		}
-		
-
-
 
 
 
