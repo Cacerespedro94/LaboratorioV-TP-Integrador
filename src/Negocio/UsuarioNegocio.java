@@ -2,11 +2,8 @@ package Negocio;
 
 import java.util.List;
 
-import org.hibernate.Session;
 
-import DAO.ConfigHibernate;
 import DAO.UsuarioDAO;
-import Entidad.Cuentas;
 import Entidad.Usuario;
 
 public class UsuarioNegocio {
