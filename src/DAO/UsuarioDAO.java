@@ -7,7 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import Entidad.Pais;
+
 import Entidad.Usuario;
 import InterfacesDAO.UsuarioInterfaz;
 ;
