@@ -82,51 +82,51 @@
      
     </div>
     <div class="col-8">
-  		<form action="AltaCliente.html">
+  		<form action="AltaCliente.html" method="POST">
 		
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
+      <input type="email" name="TXTemail" class="form-control" id="inputEmail4">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Contraseña</label>
-      <input type="password" class="form-control" id="inputPassword4">
+      <input type="password" name="TXTcontrasenia" class="form-control" id="inputPassword4">
     </div>
   </div>
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">DNI</label>
-      <input type="text" class="form-control" id="inputEmail4">
+      <input type="text" name="TXTdni" class="form-control" id="inputEmail4">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">CUIL</label>
-      <input type="text" class="form-control" id="inputPassword4">
+      <input type="text" name="TXTcuil" class="form-control" id="inputPassword4">
     </div>
   </div>
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Nombre</label>
-      <input type="text" class="form-control" id="inputEmail4">
+      <input type="text" name="TXTnombre" class="form-control" id="inputEmail4">
     </div>  
      <div class="form-group col-md-6">
       <label for="inputPassword4">Apellido</label>
-      <input type="password" class="form-control" id="inputPassword4">
+      <input type="text" name="TXTapellido" class="form-control" id="inputPassword4">
     </div>
 
   </div>
     <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputEmail4">Telefono</label>
-      <input type="text" class="form-control" id="inputEmail4">
+      <input type="text" name="TXTtelefono" class="form-control" id="inputEmail4">
     </div>
      <div class="form-group col-md-4">
       <label for="inputPassword4">Fecha de nacimiento</label>
-      <input type="date" class="form-control" id="inputPassword4">
+      <input type="date" name="TXTfecha" class="form-control" id="inputPassword4">
     </div>
        <div class="form-group col-md-4">
       <label for="inputPassword4">Sexo</label>
-        <select id="inputState" class="form-control">
+        <select id="inputState" name="TXTsexo" class="form-control">
         <option selected>Seleccionar...</option>
         <option>Masculino</option>
         <option>Femenino</option>
@@ -135,16 +135,16 @@
   </div>
   <div class="form-group">
     <label for="inputAddress">Direccion</label>
-    <input type="text" class="form-control" id="inputAddress" >
+    <input type="text" name="TXTdomicilio" class="form-control" id="inputAddress" >
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">Localidad</label>
-      <input type="text" class="form-control" id="inputCity">
+      <input type="text" name="TXTlocalidad" class="form-control" id="inputCity">
     </div>
     <div class="form-group col-md-6">
       <label for="inputState">Provincia</label>
-      <select id="inputState" class="form-control">
+      <select id="inputState" name="TXTprovincia" class="form-control">
         <option selected>Seleccionar...</option>
         <option>Buenos Aires</option>
         <option>Catamarca</option>
@@ -184,7 +184,6 @@
   </div>
 </div>
 
-		
 		<div align=center style="margin-top: 40px;">
 			${Mensaje}
 		</div>
