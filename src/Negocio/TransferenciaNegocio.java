@@ -29,16 +29,17 @@ public class TransferenciaNegocio implements TransferenciaInterfazNegocio{
 		this.transferenciaDAO.agregarTransferencia(cuenta_origen, cuenta_destino, importe, detalle);
 	}
 
-	@Override
-	public List<Transferencias> getListaDeTransferenciasByCuenta(Cuentas cuenta) {
-		// TODO Auto-generated method stub
-		return this.transferenciaDAO.getListaDeTransferenciasByCuenta(cuenta);
-	}
 
 	@Override
 	public void prueba() {
 		// TODO Auto-generated method stub
 		System.out.println("Prueba Transferencia Negocio");
+	}
+
+	@Override
+	public List<Transferencias> getListaDeTransferenciasByCuenta(Cuentas cuenta) {
+		// TODO Auto-generated method stub
+		return this.transferenciaDAO.getListaDeTransferenciasByCuenta(cuenta);
 	}
 
 }

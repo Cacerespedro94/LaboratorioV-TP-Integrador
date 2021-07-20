@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- EL CONTROLADOR ES INSTANCIADO AUTOMATICAMENTE POR EL SPRING-SERVLET --> 
+	
+	<!-- INSTANCIAS DE LAS ENTIDADES --> 
+	<bean id="usuarioLogueado" class="Entidad.Usuario" scope="singleton"></bean>
+	<bean id="movimientoBean" class="Entidad.Movimientos" scope="prototype"></bean>
+	<bean id="transferenciaBean" class="Entidad.Transferencias" scope="prototype"></bean>
+	
+	<!-- INSTANCIAS DE LA DATABASE PARA QUE USEN LOS DAO  --> 
+	<bean id="conexionHibernate" class="DAO.ConfigHibernate" init-method="abrirConexion" destroy-method="cerrarSession" scope="singleton">
+	</bean>
+
+	<!-- INSTANCIAS DE LOS OBJETOS DAO PARA QUE USEN LOS SERVICIOS  --> 
+	<bean id="usuarioDao" class="DAO.UsuarioDAO" scope="singleton"> 
+		<property name="ch" ref="conexionHibernate"></property> 
+	</bean>
+
+	<bean id="cuentaDao" class="DAO.CuentaDAO" scope="singleton"> 
+		<property name="ch" ref="conexionHibernate"></property> 
+	</bean>
+
+	<bean id="movimientoDao" class="DAO.MovimientoDAO" scope="singleton"> 
+		<property name="ch" ref="conexionHibernate"></property> 
+		<property name="movimiento" ref="movimientoBean"></property> 
+	</bean>
+		
+	<bean id="transferenciaDao" class="DAO.TransferenciaDAO" scope="singleton"> 
+		<property name="ch" ref="conexionHibernate"></property>
+		<property name="transferencia" ref="transferenciaBean"></property> 
+	</bean>	
+	
+	<!-- INSTANCIAS DE LOS SERVICIOS PARA QUE USEN EL CONTROLADOR --> 
+	<bean id="movimientoNegocio" class="Negocio.MovimientoNegocio" scope="singleton"> 
+		<property name="movimientoDao" ref="movimientoDao"></property> 
+		<property name="cuentaNegocio" ref="cuentaNegocio"></property> 
+		<property name="transferenciaNegocio" ref="transferenciaNegocio"></property> 
+	</bean>
+	
+	<bean id="cuentaNegocio" class="service.CuentaNegocio" scope="singleton"> 
+		<property name="cuentaDao" ref="cuentaDao"></property> 
+	</bean>
+			
+	<bean id="usuarioNegocio" class="service.UsuarioNegocio" scope="singleton"> 
+		<property name="usuarioDao" ref="usuarioDao"></property> 
+		<property name="usuarioLogueado" ref="usuarioLogueado"></property> 
+	</bean>
+	
+	<bean id="transferenciaNegocio" class="service.TransferenciaNegocio" scope="singleton"> 
+		<property name="transferenciaDao" ref="transferenciaDao"></property> 
+	</bean>
+	
+	
+</beans>
